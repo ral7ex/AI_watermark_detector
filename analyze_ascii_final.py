@@ -1,8 +1,15 @@
+EXEMPT_CHARACTERS = [
+    8217, # right oriented single quote
+    8220, # left oriented quote
+    8221, # right oriented quote
+    10 # newline
+]
+
 def is_sus_ascii(character) -> bool:
     # Check if the character is a printable ASCII character
     # source for what are normal characters: https://www.ascii-code.com/'
     ascii_code = ord(character)
-    if 32 <= ascii_code <= 126 or ascii_code==10:
+    if 32 <= ascii_code <= 126 or ascii_code in EXEMPT_CHARACTERS:
         return False
     else:
         return True
@@ -100,7 +107,7 @@ def main():
     '''
     Change the file path as needed. Or, create an ai_testing.txt file right next to this file
     '''
-    file_path = "Documents/Code/Fun_Box/AI_Watermarking_Project/ai_testing.txt"
+    file_path = "Documents/ai_testing.txt"
     process_file(file_path) 
 
 if __name__ == "__main__":
